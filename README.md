@@ -1,6 +1,41 @@
-## 安装
+## 测试步骤
 
-### 环境配置
+### CMake示例
+
+#### 环境配置
+
+```
+apt install libboost-all-dev libfmt-dev
+```
+
+#### 编译
+
+```
+cd simple
+./build.sh
+
+cd sample
+./build.sh
+
+cd sample_lib
+./build.sh
+```
+
+#### 运行
+
+```
+cd simple/build/output/bin
+export LD_LIBRARY_PATH=../lib:$LD_LIBRARY_PATH
+./sample ..
+
+cd sample_lib/build/output/bin
+export LD_LIBRARY_PATH=../lib:$LD_LIBRARY_PATH
+./demo ..
+```
+
+### Conan示例
+
+#### 环境配置
 
 > 安装Conan
 
@@ -25,7 +60,7 @@ EOF
 conan install conanfile.txt --build=missing
 ```
 
-### 编译
+#### 编译
 
 ```
 cd simple
@@ -41,7 +76,7 @@ cd sample_lib/example
 ./build.sh
 ```
 
-### 运行
+#### 运行
 
 ```
 cd simple/build/bin
@@ -57,6 +92,20 @@ export LD_LIBRARY_PATH=../lib:$LD_LIBRARY_PATH
 ```
 
 ## 概述
+
+### cmake目录
+
+> simple
+
+最简单的示例
+
+> sample
+
+展示了`find_package`和`pkg_check_modules`基本用法，用于查找通过系统命令安装的库或自己编译安装的库
+
+> sample_lib
+
+展示了如何编译构造动态库，以及如何编写测试用例
 
 ### conan目录
 
